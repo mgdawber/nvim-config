@@ -5,8 +5,9 @@ return require('packer').startup(function()
     -- Quickstart configs
     use 'neovim/nvim-lspconfig'
 
-    -- Theme
-    use 'wuelnerdotexe/vim-enfocado'
+    use 'dense-analysis/ale'
+
+    use 'shaunsingh/nord.nvim'
 
     -- Fuzzy finder
 	use {
