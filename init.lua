@@ -23,3 +23,11 @@ require('keymappings')
 -- LSP specific mappings
 require('lsp_lua')
 
+local telescope = require("telescope")
+telescope.setup({
+    pickers = {
+        find_files = {
+            find_command = { "rg", "--files", "--hidden", "--glob", "!.git", "--glob", "!build" },
+        },
+    },
+})

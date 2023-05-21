@@ -32,15 +32,37 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lsp_flags = { 
     debounce_text_changes = 150, 
 }
 
-local servers = { 'clangd', 'tsserver', 'rust_analyzer' }
+local servers = { 'clangd', 'tsserver' }
 
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         on_attach = on_attach,
         flags = lsp_flags,
+        capabilities = capabilities,
     }
 end
+
+require('lspconfig').elixirls.setup{
+    cmd = { "/usr/bin/elixir-ls/language_server.sh" },
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
+
+require("nvim-treesitter.configs").setup(
+{
+    ensure_installed = {
+        "eex",
+        "elixir",
+        "erlang",
+        "heex",
+        "html",
+        "surface",
+    },
+    highlight = {enable = true},
+})
