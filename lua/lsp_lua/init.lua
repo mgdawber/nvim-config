@@ -47,22 +47,10 @@ for _, lsp in pairs(servers) do
     }
 end
 
+local path_to_elixirls = vim.fn.expand("~/.elixir-ls/release/language_server.sh")
 require('lspconfig').elixirls.setup{
-    cmd = { "/usr/bin/elixir-ls/language_server.sh" },
+    cmd = { path_to_elixirls },
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
 }
-
-require("nvim-treesitter.configs").setup(
-{
-    ensure_installed = {
-        "eex",
-        "elixir",
-        "erlang",
-        "heex",
-        "html",
-        "surface",
-    },
-    highlight = {enable = true},
-})
