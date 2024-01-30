@@ -46,11 +46,3 @@ for _, lsp in pairs(servers) do
         capabilities = capabilities,
     }
 end
-
-local path_to_elixirls = vim.fn.expand("~/.elixir-ls/release/language_server.sh")
-require('lspconfig').elixirls.setup{
-    cmd = { path_to_elixirls },
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}

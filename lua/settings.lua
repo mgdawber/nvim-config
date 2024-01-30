@@ -25,7 +25,3 @@ utils.opt('o', 'termguicolors', false)
 
 -- Highlight on yank
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
-
-vim.cmd('colorscheme modus-operandi') -- Light
-
-vim.opt.termguicolors = true

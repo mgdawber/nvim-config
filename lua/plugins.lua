@@ -32,10 +32,6 @@ return require('packer').startup(function()
     --
   -- treesitter for syntax highlighting and more
   use {'nvim-treesitter/nvim-treesitter'}
-
-  use 'elixir-editors/vim-elixir'
-
-  use 'ishan9299/modus-theme-vim'
 end)
 
 
