@@ -37,6 +37,7 @@ local lsp_flags = {
     debounce_text_changes = 150, 
 }
 
+-- Make sure to have the language server installed on the system
 local servers = { 'clangd', 'tsserver' }
 
 for _, lsp in pairs(servers) do

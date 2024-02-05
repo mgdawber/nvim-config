@@ -5,6 +5,8 @@ return require('packer').startup(function()
     -- Quickstart configs
     use 'neovim/nvim-lspconfig'
 
+    -- Check syntax in Vim/Neovim asynchronously and fix files, 
+    -- with Language Server Protocol (LSP) support
     use 'dense-analysis/ale'
 
     -- Fuzzy finder
