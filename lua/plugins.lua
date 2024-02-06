@@ -12,7 +12,7 @@ return require('packer').startup(function()
     -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim',
-        tag = "0.1.4",
+        tag = '0.1.4',
         requires = { {
             'nvim-lua/plenary.nvim', 
             'nvim-telescope/telescope-fzf-native.nvim',
@@ -25,15 +25,16 @@ return require('packer').startup(function()
     -- Auto commenting
     use 'tpope/vim-commentary'
 
+    -- Ruby on Rails support
+    use 'tpope/vim-rails'
+
     -- Auto Complete Snippets
-    use("hrsh7th/nvim-cmp")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-cmdline")
-	use("L3MON4D3/LuaSnip")
+    use('hrsh7th/nvim-cmp')
+    use('hrsh7th/cmp-nvim-lsp')
+    use('hrsh7th/cmp-buffer')
+    use('hrsh7th/cmp-cmdline')
+	use('L3MON4D3/LuaSnip')
     --
   -- treesitter for syntax highlighting and more
-  use {'nvim-treesitter/nvim-treesitter'}
+  use 'nvim-treesitter/nvim-treesitter'
 end)
-
-

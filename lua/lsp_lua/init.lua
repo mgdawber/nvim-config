@@ -38,7 +38,7 @@ local lsp_flags = {
 }
 
 -- Make sure to have the language server installed on the system
-local servers = { 'clangd', 'tsserver' }
+local servers = { 'clangd', 'tsserver', 'solargraph' }
 
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
