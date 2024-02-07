@@ -1,18 +1,17 @@
 return require('packer').startup(function()
-    -- Package management
+    -- Package Management
     use 'wbthomason/packer.nvim'
 
-    -- Quickstart configuration
+    -- Quickstart Configuration
     use 'neovim/nvim-lspconfig'
 
-    -- Check syntax in Vim/Neovim asynchronously and fix files, 
-    -- with Language Server Protocol (LSP) support
+    -- Syntax check asynchronously and fix files, with LSP support
     use 'dense-analysis/ale'
 
     -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.5',
+        tag = '*',
         requires = { { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzf-native.nvim', } }
     }
 
@@ -40,7 +39,22 @@ return require('packer').startup(function()
     -- LaTeX preivew support
     use 'lervag/vimtex'
 
+    -- Theme
+    use { "catppuccin/nvim", as = "catppuccin" }
+
     -- Markdown preview support
     use({ "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, })
-    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+    -- Obisidian note taking support
+    use({
+        "epwalsh/obsidian.nvim",
+        tag = "*",
+        requires = { "nvim-lua/plenary.nvim", },
+        config = function()
+            require("obsidian").setup({
+                workspaces = { { name = "personal", path = "~/Documents/personal", },
+                },
+            })
+        end,
+    })
 end)
