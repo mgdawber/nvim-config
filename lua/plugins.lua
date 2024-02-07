@@ -1,8 +1,8 @@
 return require('packer').startup(function()
-    -- Package manager
+    -- Package management
     use 'wbthomason/packer.nvim'
 
-    -- Quickstart configs
+    -- Quickstart configuration
     use 'neovim/nvim-lspconfig'
 
     -- Check syntax in Vim/Neovim asynchronously and fix files, 
@@ -12,11 +12,8 @@ return require('packer').startup(function()
     -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.4',
-        requires = { {
-            'nvim-lua/plenary.nvim', 
-            'nvim-telescope/telescope-fzf-native.nvim',
-        } }
+        tag = '0.1.5',
+        requires = { { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzf-native.nvim', } }
     }
 
     -- Git bindings
@@ -28,13 +25,22 @@ return require('packer').startup(function()
     -- Ruby on Rails support
     use 'tpope/vim-rails'
 
-    -- Auto Complete Snippets
+    -- Code Auto Complete
     use('hrsh7th/nvim-cmp')
     use('hrsh7th/cmp-nvim-lsp')
     use('hrsh7th/cmp-buffer')
     use('hrsh7th/cmp-cmdline')
-	use('L3MON4D3/LuaSnip')
+
+    -- Code Snippets
+    use('L3MON4D3/LuaSnip')
     --
-  -- treesitter for syntax highlighting and more
-  use 'nvim-treesitter/nvim-treesitter'
+    -- treesitter for syntax highlighting and more
+    use 'nvim-treesitter/nvim-treesitter'
+
+    -- LaTeX preivew support
+    use 'lervag/vimtex'
+
+    -- Markdown preview support
+    use({ "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, })
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 end)
