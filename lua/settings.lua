@@ -20,6 +20,8 @@ utils.opt('w', 'relativenumber', true)
 utils.opt('o', 'clipboard','unnamedplus')
 utils.opt('o', 'termguicolors', true)
 
+vim.opt.conceallevel = 2
+
 -- Highlight on yank
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 

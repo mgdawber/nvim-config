@@ -5,11 +5,14 @@ catppuccin.setup({
     integrations = {
         cmp = true,
         gitsigns = true,
-        nvimtree = true,
+        markdown = true,
+        semantic_tokens = true,
         treesitter = true,
-        mini = {
-            enabled = true,
-            indentscope_color = "",
-        },
-    }
+    },
+    color_overrides = {
+      mocha = {
+        peach = "#fcc6a7",
+        green = "#d2fac5",
+      },
+    },
 })

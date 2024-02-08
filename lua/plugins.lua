@@ -6,7 +6,7 @@ return require('packer').startup(function()
     use 'neovim/nvim-lspconfig'
 
     -- Syntax check asynchronously and fix files, with LSP support
-    use 'dense-analysis/ale'
+    use { 'jose-elias-alvarez/null-ls.nvim', requires = { { 'nvim-lua/plenary.nvim'} } }
 
     -- Fuzzy finder
     use {
@@ -32,15 +32,25 @@ return require('packer').startup(function()
 
     -- Code Snippets
     use('L3MON4D3/LuaSnip')
-    --
+
     -- treesitter for syntax highlighting and more
     use 'nvim-treesitter/nvim-treesitter'
+
+    -- Status line
+    use { 'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons' } }
+
+    -- Git signs
+    use "lewis6991/gitsigns.nvim"
 
     -- LaTeX preivew support
     use 'lervag/vimtex'
 
     -- Theme
     use { "catppuccin/nvim", as = "catppuccin" }
+
+    -- Third Party Package Management
+    use "williamboman/mason.nvim" 
+    use "williamboman/mason-lspconfig.nvim"
 
     -- Markdown preview support
     use({ "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, })
@@ -52,7 +62,7 @@ return require('packer').startup(function()
         requires = { "nvim-lua/plenary.nvim", },
         config = function()
             require("obsidian").setup({
-                workspaces = { { name = "personal", path = "~/Documents/personal", },
+                workspaces = { { name = "home", path = "/Users/matthewdawber/Library/Mobile Documents/iCloud~md~obsidian/Documents", },
                 },
             })
         end,

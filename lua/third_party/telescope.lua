@@ -1,6 +1,13 @@
 local telescope = require("telescope")
 
 telescope.setup({
+    defaults = {
+        layout_strategy = "vertical",
+        layout_config = {
+            height = 0.95,
+            prompt_position = 'top',
+        },
+    },
     pickers = {
         find_files = {
             find_command = { "rg", "--files", "--hidden", "--glob", "!.git", "--glob", "!build" },
