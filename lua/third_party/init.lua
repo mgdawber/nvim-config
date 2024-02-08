@@ -1,7 +1,0 @@
-require('third_party.catppuccin')
-require('third_party.cmp')
-require('third_party.gitsigns')
-require('third_party.lualine')
-require('third_party.mason')
-require('third_party.null_ls')
-require('third_party.telescope')
