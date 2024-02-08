@@ -3,9 +3,8 @@ local M = {
     cmd = "Copilot",
     build = ":Copilot auth",
     opts = {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-        ft_disable = { "markdown", "terraform", "cpp" },
+        suggestion = { enabled = true },
+        panel = { enabled = true },
     },
 }
 
