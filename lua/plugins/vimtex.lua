@@ -1,6 +1,7 @@
 local M = {
     "lervag/vimtex",
-    event = "BufRead",
+    event = { 'BufReadPre', 'BufNewFile' },
+    lazy = false,
 }
 
 return M
