@@ -23,7 +23,6 @@ local M = {
         ensure_installed = {
             "bash",
             "c",
-            "comment",
             "css",
             "html",
             "http",
@@ -32,6 +31,7 @@ local M = {
             "latex",
             "lua",
             "ruby",
+            "yaml"
         },
         sync_install = false,
         ignore_install = {}, -- List of parsers to ignore installation

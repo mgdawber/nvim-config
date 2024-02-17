@@ -19,4 +19,4 @@ vim.api.nvim_set_keymap('n', ',/', ':nohl<CR>', { noremap = true, silent = true 
 
 -- Format code
 vim.api.nvim_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
-vim.keymap.set('v', '==', function() vim.lsp.buf.format() end, { noremap = true, silent = true })
+vim.keymap.set('v', '=', '<Esc>:lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })

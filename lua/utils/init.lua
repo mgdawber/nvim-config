@@ -47,36 +47,26 @@ M.lsp_kinds = {
 
 M.mason_packages = {
     "bash-language-server",
-    "clang-format",
     "clangd",
     "css-lsp",
-    "editorconfig-checker",
     "eslint-lsp",
     "graphql-language-service-cli",
     "html-lsp",
-    "json-lsp",
     "lua-language-server",
     "markdownlint",
     "prettier",
-    "shfmt",
     "tailwindcss-language-server",
-    "typescript-language-server",
-    "yaml-language-server",
 }
 
 M.lsp_servers = {
     "bashls",
-    "clangd",
     "cssls",
     "eslint",
-    "graphql",
     "html",
     "jsonls",
+    "standardrb",
     "lua_ls",
-    "solargraph",
     "tailwindcss",
-    "tsserver",
-    "yamlls",
 }
 
 function M.on_attach(on_attach)
