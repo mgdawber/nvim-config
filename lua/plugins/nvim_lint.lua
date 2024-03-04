@@ -8,6 +8,8 @@ local M = {
         local lint = require("lint")
 
         lint.linters_by_ft = {
+            javascript = { "prettier" },
+            typescript = { "prettier" },
             ruby = { "rubocop" },
             erb = { "rubocop" },
         }
