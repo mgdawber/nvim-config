@@ -14,8 +14,6 @@ local M = {
                 html = { "prettier" },
                 json = { "prettier" },
                 yaml = { "prettier" },
-                ruby = { "standardrb" },
-                erb = { "standardrb" },
                 markdown = { "prettier" },
                 graphql = { "prettier" },
             },

@@ -64,7 +64,6 @@ M.lsp_servers = {
     "eslint",
     "html",
     "jsonls",
-    "standardrb",
     "lua_ls",
     "tailwindcss",
 }
