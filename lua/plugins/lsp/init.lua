@@ -11,6 +11,7 @@ return {
             local mason_lspconfig = require("mason-lspconfig")
             local lspconfig = require("lspconfig")
             local lsp_utils = require("plugins.lsp.lsp-utils")
+
             lsp_utils.setup()
 
             mason_lspconfig.setup({
@@ -25,30 +26,26 @@ return {
                     })
                 end,
                 ["clangd"] = function()
-                    local capabilities_cpp = lsp_utils.capabilities
-                    capabilities_cpp.offsetEncoding = { "uts-16" }
                     lspconfig.clangd.setup({
                         on_attach = lsp_utils.on_attach,
-                        capabilities = capabilities_cpp,
+                        capabilities = vim.tbl_extend("keep", lsp_utils.capabilities, {
+                            offsetEncoding = { "utf-16" }, -- Correct encoding
+                        }),
                     })
                 end,
                 ["lua_ls"] = function()
-                    local capabilities_cpp = lsp_utils.capabilities
-                    capabilities_cpp.offsetEncoding = { "uts-16" }
                     lspconfig.lua_ls.setup({
                         on_attach = lsp_utils.on_attach,
-                        capabilities = capabilities_cpp,
+                        capabilities = vim.tbl_extend("keep", lsp_utils.capabilities, {
+                            offsetEncoding = { "utf-16" }, -- Correct encoding
+                        }),
                         settings = {
                             Lua = {
                                 diagnostics = {
-                                    -- Get the language server to recognize the `vim` global
-                                    globals = {
-                                        'vim',
-                                        'require'
-                                    },
+                                    globals = { 'vim', 'require' }, -- Recognize these globals
                                 },
                             },
-                        }
+                        },
                     })
                 end,
             })
@@ -75,6 +72,7 @@ return {
             local utils = require("utils")
             local mr = require("mason-registry")
             local packages = utils.mason_packages
+
             local function ensure_installed()
                 for _, package in ipairs(packages) do
                     local p = mr.get_package(package)

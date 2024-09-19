@@ -9,6 +9,7 @@ local M = {
     },
     opts = function()
         local cmp = require("cmp")
+        local luasnip = require("luasnip")
         local lsp_kinds = require("utils").lsp_kinds
 
         local has_words_before = function()
@@ -19,8 +20,6 @@ local M = {
             return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
         end
 
-        local luasnip = require("luasnip")
-
         return {
             snippet = {
                 expand = function(args)
@@ -29,12 +28,15 @@ local M = {
             },
             formatting = {
                 format = function(entry, vim_item)
-                    if vim.tbl_contains({ "path" }, entry.source.name) then
-                        local icon, hl_group = require("nvim-web-devicons").get_icon(entry:get_completion_item().label)
-                        if icon then
-                            vim_item.kind = icon
-                            vim_item.kind_hl_group = hl_group
-                            return vim_item
+                    if entry.source.name:match("path") then
+                        local devicons = require('nvim-web-devicons')
+                        if devicons and devicons.get_icon then
+                            local icon, hl_group = devicons.get_icon(entry:get_completion_item().label)
+                            if icon then
+                                vim_item.kind = icon
+                                vim_item.kind_hl_group = hl_group
+                                return vim_item
+                            end
                         end
                     end
                     vim_item.kind = (lsp_kinds[vim_item.kind] or "") .. " " .. vim_item.kind
@@ -83,21 +85,21 @@ local M = {
                 documentation = cmp.config.window.bordered(),
             },
             experimental = {
-                ghost_text = {
-                    hl_group = "LspCodeLens",
-                },
+                ghost_text = true,
             },
         }
     end,
     config = function(_, opts)
         local cmp = require("cmp")
         cmp.setup(opts)
+
         cmp.setup.cmdline({ "/", "?" }, {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
                 { name = "buffer" },
             },
         })
+
         cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = cmp.config.sources({

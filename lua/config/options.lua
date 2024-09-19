@@ -4,8 +4,9 @@ local opt = vim.opt
 -- Map leader to space
 vim.g.mapleader = ' '
 
-vim.cmd 'syntax enable'
-vim.cmd 'filetype plugin indent on'
+-- Enable syntax highlighting and filetype plugins
+vim.cmd('syntax enable')
+vim.cmd('filetype plugin indent on')
 
 -- Buffer-local options
 opt.expandtab = true
@@ -34,8 +35,5 @@ opt.termguicolors = true
 -- Setting conceallevel
 opt.conceallevel = 2
 
--- Comeplete options
+-- Complete options
 opt.completeopt = 'menu,menuone,noselect'
-
--- Highlight on yank
-vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'

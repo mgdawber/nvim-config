@@ -1,6 +1,6 @@
 local M = {
     "tpope/vim-fugitive",
-    lazy = false,
+    cmd = { "Git", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse" }, -- Lazy load on Git commands
 }
 
 return M

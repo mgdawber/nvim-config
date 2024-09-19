@@ -1,6 +1,7 @@
 local M = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    lazy = false,  -- Load treesitter as soon as possible
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
         "nvim-treesitter/nvim-treesitter-refactor",
@@ -31,14 +32,13 @@ local M = {
             "latex",
             "lua",
             "ruby",
-            "yaml"
+            "yaml",
         },
-        sync_install = false,
-        ignore_install = {}, -- List of parsers to ignore installation
+        sync_install = false, -- Set to true if you want parsers installed synchronously
+        ignore_install = {},
         refactor = {
             highlight_definitions = {
                 enable = true,
-                -- Set to false if you have an `updatetime` of ~100.
                 clear_on_cursor_move = true,
             },
             highlight_current_scope = { enable = false },

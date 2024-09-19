@@ -66,6 +66,7 @@ M.lsp_servers = {
     "jsonls",
     "lua_ls",
     "tailwindcss",
+    "solargraph",
 }
 
 function M.on_attach(on_attach)
@@ -90,8 +91,10 @@ function M.info(msg, notify_opts)
     vim.notify(msg, vim.log.levels.INFO, notify_opts)
 end
 
----@param silent boolean?
----@param values? {[1]:any, [2]:any}
+--- Toggle an option with optional values and feedback.
+---@param option string: The option to toggle.
+---@param silent boolean?: If true, suppress feedback messages.
+---@param values table?: If provided, toggle between these two values.
 function M.toggle(option, silent, values)
     if values then
         if vim.opt_local[option]:get() == values[1] then
@@ -99,31 +102,35 @@ function M.toggle(option, silent, values)
         else
             vim.opt_local[option] = values[1]
         end
-        return require("utils").info("Set " .. option .. " to " .. vim.opt_local[option]:get(), { title = "Option" })
+        return M.info("Set " .. option .. " to " .. vim.opt_local[option]:get(), { title = "Option" })
     end
+
     vim.opt_local[option] = not vim.opt_local[option]:get()
+
     if not silent then
         if vim.opt_local[option]:get() then
-            require("utils").info("Enabled " .. option, { title = "Option" })
+            M.info("Enabled " .. option, { title = "Option" })
         else
-            require("utils").warn("Disabled " .. option, { title = "Option" })
+            M.warn("Disabled " .. option, { title = "Option" })
         end
     end
 end
 
 M.diagnostics_active = true
+
 function M.toggle_diagnostics()
     M.diagnostics_active = not M.diagnostics_active
     if M.diagnostics_active then
         vim.diagnostic.show()
-        require("utils").info("Enabled Diagnostics", { title = "Lsp" })
+        M.info("Enabled Diagnostics", { title = "Lsp" })
     else
         vim.diagnostic.hide()
-        require("utils").warn("Disabled Diagnostics", { title = "Lsp" })
+        M.warn("Disabled Diagnostics", { title = "Lsp" })
     end
 end
 
 M.quickfix_active = false
+
 function M.toggle_quickfix()
     M.quickfix_active = not M.quickfix_active
     if M.quickfix_active then

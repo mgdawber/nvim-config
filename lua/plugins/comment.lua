@@ -1,6 +1,6 @@
 local M = {
     "tpope/vim-commentary",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },  -- Lazy-load on buffer read/new file
 }
 
 return M

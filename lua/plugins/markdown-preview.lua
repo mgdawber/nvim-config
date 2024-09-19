@@ -1,9 +1,12 @@
 local M = {
     "iamcco/markdown-preview.nvim",
-    event = "BufRead",
+    ft = "markdown", -- Load only for Markdown filetypes
     lazy = false,
     config = function()
-      vim.fn["mkdp#util#install"]()
+        -- Ensure the plugin is installed
+        if not vim.fn["mkdp#util#install"]() then
+            print("Markdown Preview plugin installation failed.")
+        end
     end,
 }
 

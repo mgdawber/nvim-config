@@ -1,12 +1,8 @@
 local M = {
     "catppuccin/nvim",
-    lazy = false,
+    event = "VimEnter", -- Load the colorscheme on VimEnter for slight startup performance boost
     name = "catppuccin",
     priority = 1000,
-    config = function()
-        require("catppuccin").setup({})
-        vim.cmd.colorscheme "catppuccin-mocha"
-    end,
     opts = {
         integrations = {
             cmp = true,
@@ -31,6 +27,13 @@ local M = {
             which_key = true,
         },
     },
+    config = function(_, opts)
+        require("catppuccin").setup(opts)
+        local ok, _ = pcall(vim.cmd.colorscheme, "catppuccin-mocha")
+        if not ok then
+            vim.notify("Catppuccin Mocha colorscheme not found!", vim.log.levels.ERROR)
+        end
+    end,
 }
 
 return M

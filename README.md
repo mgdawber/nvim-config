@@ -10,6 +10,5 @@
 - **Treesitter**: Syntax highlighting and code folding powered by treesitter.
 - **Telescope**: Fuzzy finder for finding files, commands, and more.
 - **Lualine**: A fast and light statusline/tabline written in Lua.
-- **Which-key**: Displays keybindings in a popup window.
 
 [preview]: ./preview.png
