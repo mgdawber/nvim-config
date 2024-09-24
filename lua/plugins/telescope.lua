@@ -21,7 +21,7 @@ local M = {
             telescope.setup({
                 defaults = {
                     layout_strategy = "vertical",
-                    previewer = true,  -- Enable previewer, you can toggle this if needed
+                    previewer = false,
                     layout_config = {
                         height = 0.65,
                     },
@@ -34,7 +34,7 @@ local M = {
                 },
                 pickers = {
                     find_files = {
-                        previewer = true,  -- Enable previewer for file searches
+                        previewer = false,
                         find_command = { "rg", "--files", "--hidden", "--glob", "!.git", "--glob", "!build" },
                     },
                     diagnostics = {

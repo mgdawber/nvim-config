@@ -2,7 +2,6 @@ local M = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     lazy = false,  -- Load treesitter as soon as possible
-    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
         "nvim-treesitter/nvim-treesitter-refactor",
     },
@@ -18,8 +17,6 @@ local M = {
             end,
             additional_vim_regex_highlighting = false,
         },
-        autopairs = { enable = true },
-        autotag = { enable = true },
         indent = { enable = true },
         ensure_installed = {
             "bash",
