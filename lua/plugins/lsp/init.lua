@@ -29,8 +29,24 @@ return {
                     lspconfig.clangd.setup({
                         on_attach = lsp_utils.on_attach,
                         capabilities = vim.tbl_extend("keep", lsp_utils.capabilities, {
-                            offsetEncoding = { "utf-16" }, -- Correct encoding
+                            offsetEncoding = { "utf-16" },
                         }),
+                    })
+                end,
+                ["solargraph"] = function()
+                    lspconfig.clangd.setup({
+                        on_attach = lsp_utils.on_attach,
+                        capabilities = vim.tbl_extend("keep", lsp_utils.capabilities, {
+                            offsetEncoding = { "utf-16" },
+                        }),
+                        settings = {
+                            solargraph = {
+                                diagnostics = true,
+                                formatting = true,
+                                useBundler = true,
+                                -- autoformat = true,
+                            },
+                        },
                     })
                 end,
                 ["lua_ls"] = function()

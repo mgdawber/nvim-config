@@ -1,9 +1,8 @@
 local M = {
     "lervag/vimtex",
-    lazy = false,
+    lazy = false, -- vimtex is already lazy
     config = function()
         vim.g.vimtex_compiler_latexmk_engines = { ["default"] = "xelatex" }
-        -- vim.g.vimtex_compiler_method = 'xelatex'
         vim.g.vimtex_view_method = 'skim'
     end
 }
