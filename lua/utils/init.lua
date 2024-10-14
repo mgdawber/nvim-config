@@ -66,7 +66,6 @@ M.lsp_servers = {
     "jsonls",
     "lua_ls",
     "tailwindcss",
-    "solargraph",
 }
 
 function M.on_attach(on_attach)

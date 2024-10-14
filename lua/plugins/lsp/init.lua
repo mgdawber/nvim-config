@@ -33,32 +33,16 @@ return {
                         }),
                     })
                 end,
-                ["solargraph"] = function()
-                    lspconfig.clangd.setup({
+                ["lua_ls"] = function()
+                    lspconfig.lua_ls.setup({
                         on_attach = lsp_utils.on_attach,
                         capabilities = vim.tbl_extend("keep", lsp_utils.capabilities, {
                             offsetEncoding = { "utf-16" },
                         }),
                         settings = {
-                            solargraph = {
-                                diagnostics = true,
-                                formatting = true,
-                                useBundler = true,
-                                -- autoformat = true,
-                            },
-                        },
-                    })
-                end,
-                ["lua_ls"] = function()
-                    lspconfig.lua_ls.setup({
-                        on_attach = lsp_utils.on_attach,
-                        capabilities = vim.tbl_extend("keep", lsp_utils.capabilities, {
-                            offsetEncoding = { "utf-16" }, -- Correct encoding
-                        }),
-                        settings = {
                             Lua = {
                                 diagnostics = {
-                                    globals = { 'vim', 'require' }, -- Recognize these globals
+                                    globals = { 'vim', 'require' },
                                 },
                             },
                         },

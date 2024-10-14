@@ -41,20 +41,28 @@ local M = {
             pcall(telescope.load_extension, "fzf")
         end,
         keys = {
-            { "<C-b>", function() require('telescope.builtin').buffers() end, desc = "Open buffers" },
-            { "<C-p>", function() require('telescope.builtin').find_files() end, desc = "Find files" },
-            { "<C-k>", function() require('telescope.builtin').keymaps() end, desc = "Search keymaps" },
+            { "<C-b>", function() require('telescope.builtin').buffers() end,     desc = "Open buffers" },
+            { "<C-p>", function() require('telescope.builtin').find_files() end,  desc = "Find files" },
             { "<C-e>", function() require('telescope.builtin').diagnostics() end, desc = "Search diagnostics" },
-            { "<C-x>", function() require('telescope.builtin').live_grep() end, desc = "Live grep" },
-            { "<leader>/", function()
-                require('telescope.builtin').current_buffer_fuzzy_find(
-                require('telescope.themes').get_dropdown({
-                    winblend = 10,
-                    previewer = false,
-                })
-                )
-            end,
-            desc = "Search in current buffer"
+            { "<C-x>", function() require('telescope.builtin').live_grep() end,   desc = "Live grep" },
+            {
+                "<C-s>",
+                function()
+                    require('telescope.builtin').live_grep({ default_text = vim.fn.expand('<cword>') })
+                end,
+                desc = "Live grep with word under cursor"
+            },
+            {
+                "<leader>/",
+                function()
+                    require('telescope.builtin').current_buffer_fuzzy_find(
+                        require('telescope.themes').get_dropdown({
+                            winblend = 10,
+                            previewer = false,
+                        })
+                    )
+                end,
+                desc = "Search in current buffer"
             }
         },
     },

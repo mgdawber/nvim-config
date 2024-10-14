@@ -28,6 +28,5 @@ map('n', '<leader>rc', ':Rails console<CR>', opts)
 map('n', '<leader>rs', ':Rails server<CR>', opts)
 map('n', '<leader>rdb', ':Rails dbconsole<CR>', opts)
 
--- RuboCop lint command
--- TODO: Fix this.
--- map('n', '<leader>rl', '<cmd>LspDiagnostics<CR>', opts)
+-- Explore shortcut
+map('n', '<C-d>', '<cmd>Explore<CR>', opts)

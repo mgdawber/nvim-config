@@ -1,6 +1,16 @@
 local M = {
     "stevearc/conform.nvim",
-    event = { "BufReadPre", "BufNewFile" }, -- Lazy load on buffer read/new file
+    event = { "BufReadPre", "BufNewFile" },
+    keys = {
+        {
+            "<leader>ff",
+            function()
+                require("conform").format({ async = true })
+            end,
+            mode = "",
+            desc = "Format buffer",
+        },
+    },
     config = function()
         local ok, conform = pcall(require, "conform")
         if not ok then
@@ -8,10 +18,8 @@ local M = {
             return
         end
 
-        -- Define common formatters
         local prettier_formatters = { "prettier" }
 
-        -- Setup conform with formatters
         conform.setup({
             formatters_by_ft = {
                 javascript = prettier_formatters,
@@ -24,6 +32,10 @@ local M = {
                 yaml = prettier_formatters,
                 markdown = prettier_formatters,
                 graphql = prettier_formatters,
+            },
+            format_on_save = {
+                timeout_ms = 500,
+                lsp_fallback = true,
             },
         })
     end,
