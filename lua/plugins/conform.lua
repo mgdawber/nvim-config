@@ -33,10 +33,6 @@ local M = {
                 markdown = prettier_formatters,
                 graphql = prettier_formatters,
             },
-            format_on_save = {
-                timeout_ms = 500,
-                lsp_fallback = true,
-            },
         })
     end,
 }
