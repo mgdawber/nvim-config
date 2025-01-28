@@ -10,9 +10,10 @@ vim.cmd("filetype plugin indent on")
 
 -- Buffer-local options
 opt.expandtab = true
-opt.shiftwidth = 4
+opt.shiftwidth = 2
+opt.softtabstop = 2
+opt.tabstop = 2
 opt.smartindent = true
-opt.tabstop = 4
 
 -- Global options
 opt.hidden = true

@@ -12,11 +12,25 @@ local M = {
 		},
 		config = function()
 			local telescope = require("telescope")
+      local previewers = require("telescope.previewers") -- Add this line
 
 			telescope.setup({
 				defaults = {
 					layout_strategy = "horizontal",
 					previewer = true,
+          -- TODO: Need to think about how to make this automatic.
+          --       filesize, filename (.min.js)...
+          buffer_previewer_maker = function(filepath, bufnr, opts)
+            if filepath:match("vendor/javascript/three%.js") then
+              vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {
+                "File manually excluded from preview as it's too large.",
+                "Path: " .. filepath,
+              })
+              return
+            end
+
+            previewers.buffer_previewer_maker(filepath, bufnr, opts)
+          end,
 					layout_config = {
 						height = 0.65,
 					},
