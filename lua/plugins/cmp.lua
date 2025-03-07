@@ -27,18 +27,7 @@ local M = {
 				end,
 			},
 			formatting = {
-				format = function(entry, vim_item)
-					if entry.source.name:match("path") then
-						local devicons = require("nvim-web-devicons")
-						if devicons and devicons.get_icon then
-							local icon, hl_group = devicons.get_icon(entry:get_completion_item().label)
-							if icon then
-								vim_item.kind = icon
-								vim_item.kind_hl_group = hl_group
-								return vim_item
-							end
-						end
-					end
+				format = function(_, vim_item)
 					vim_item.kind = (lsp_kinds[vim_item.kind] or "") .. " " .. vim_item.kind
 
 					return vim_item

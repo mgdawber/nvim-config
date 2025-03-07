@@ -3,7 +3,6 @@ local M = {
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"kyazdani42/nvim-web-devicons",
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build = "make",
@@ -12,14 +11,12 @@ local M = {
 		},
 		config = function()
 			local telescope = require("telescope")
-      local previewers = require("telescope.previewers") -- Add this line
+      local previewers = require("telescope.previewers")
 
 			telescope.setup({
 				defaults = {
-					layout_strategy = "horizontal",
+					layout_strategy = "vertical",
 					previewer = true,
-          -- TODO: Need to think about how to make this automatic.
-          --       filesize, filename (.min.js)...
           buffer_previewer_maker = function(filepath, bufnr, opts)
             if filepath:match("vendor/javascript/three%.js") then
               vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {
@@ -47,7 +44,7 @@ local M = {
 						find_command = { "rg", "--files", "--hidden", "--glob", "!.git", "--glob", "!build" },
 					},
 					diagnostics = {
-						layout_strategy = "horizontal",
+						layout_strategy = "vertical",
 					},
 				},
 			})

@@ -32,6 +32,7 @@ opt.relativenumber = true
 -- General options
 opt.clipboard = "unnamedplus"
 opt.termguicolors = true
+vim.cmd('colorscheme vim')
 
 -- Setting conceallevel
 opt.conceallevel = 2
